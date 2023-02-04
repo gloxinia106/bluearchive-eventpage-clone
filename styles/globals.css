@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.up-animation {
+  transition: all 0.6s ease-out ;
+}
+
+.up-animation:hover {
+  transform: translateY(-10px);
+}
+
+.snsLink:hover > div {
+  display: none;
+}
+
+.snsLink:hover > ul {
+  display: block;
+}
