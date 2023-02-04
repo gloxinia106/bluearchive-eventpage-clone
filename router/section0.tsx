@@ -3,9 +3,10 @@ import { useRef, useState } from "react";
 
 interface Section0Props {
   fullpageApi: fullpageApi;
+  handleOpen: () => void;
 }
 
-export default function Section0({ fullpageApi }: Section0Props) {
+export default function Section0({ fullpageApi, handleOpen }: Section0Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [musicBtn, setMusicBtn] = useState(false);
 
@@ -60,7 +61,10 @@ export default function Section0({ fullpageApi }: Section0Props) {
       <div className="bg-black w-full h-full absolute top-0 opacity-70 z-10"></div>
       <div className="w-full h-full absolute top-0 z-20 flex flex-col justify-center items-center">
         <div className="bg-[url('/current/section0/title_ko.png')] w-[940px] h-[355px] bg-[-255px_0px]"></div>
-        <button className="bg-[url('/current/section0/btn_play.png')] w-[121px] h-[138px] up-animation" />
+        <button
+          className="bg-[url('/current/section0/btn_play.png')] w-[121px] h-[138px] up-animation"
+          onClick={handleOpen}
+        />
         <div className="bg-[url('/current/section0/desc_ko.png')] w-[475px] h-[65px] bg-[-491px_-500px]"></div>
         <button
           className="bg-[url('/current/section0/btn_goReg.png')] w-[450px] h-[105px] up-animation"
