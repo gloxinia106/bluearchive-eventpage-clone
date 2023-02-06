@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 .up-animation {
   transition: all 0.6s ease-out ;
 }
@@ -16,4 +20,22 @@
 
 .snsLink:hover > ul {
   display: block;
+}
+
+[type="radio"] {
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #a3a6a7;
+  background-color: white;
+  border-radius: 50%;
+}
+
+[type="radio"]:checked {
+  background-image: url('/current/bul_input_radio.png');
+  width: 25px;
+  height: 25px;
+  background-position: bottom 3px right 3px;
+  background-repeat: no-repeat;
+  border: 2px solid #e20000;
 }
