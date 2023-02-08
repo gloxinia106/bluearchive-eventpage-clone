@@ -22,7 +22,7 @@ body {
   display: block;
 }
 
-[type="radio"] {
+.circle-input {
   appearance: none;
   width: 25px;
   height: 25px;
@@ -31,11 +31,29 @@ body {
   border-radius: 50%;
 }
 
-[type="radio"]:checked {
+.circle-input:checked {
   background-image: url('/current/bul_input_radio.png');
   width: 25px;
   height: 25px;
   background-position: bottom 3px right 3px;
   background-repeat: no-repeat;
   border: 2px solid #e20000;
+}
+
+.square-checkbox {
+  appearance: none;
+  background-color: white;
+  width: 17px;
+  height: 17px;
+  border: 1px solid #a3a6a7;
+}
+
+.square-checkbox:checked {
+  
+  background-image: url('/current/bul_input_checkbox.png');
+  width: 17px;
+  height: 17px;
+  background-position: bottom 3px right 1px;
+  background-repeat: no-repeat;
+  border: 1px solid #a3a6a7;
 }
