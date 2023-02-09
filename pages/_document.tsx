@@ -6,8 +6,8 @@ export default function Document() {
       <Head />
       <body>
         <Main />
-        <div id="youtube-modal"></div>
-        <div id="notice-popup"></div>
+        <div id="modal"></div>
+        <div id="popup"></div>
         <NextScript />
       </body>
     </Html>

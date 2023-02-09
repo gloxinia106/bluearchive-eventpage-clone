@@ -21,8 +21,17 @@ const popupVariants = {
 export default function Popup({ isOpen, children, handleClose }: PopupProps) {
   const [htmlElement, setHtmlElement] = useState<HTMLElement | null>(null);
   useEffect(() => {
-    setHtmlElement(document.getElementById("notice-popup"));
+    setHtmlElement(document.getElementById("popup"));
   });
+  useEffect(() => {
+    if (isOpen) {
+      window.fullpage_api.setAllowScrolling(false);
+      window.fullpage_api.setMouseWheelScrolling(false);
+    } else {
+      window.fullpage_api.setAllowScrolling(true);
+      window.fullpage_api.setMouseWheelScrolling(true);
+    }
+  }, [isOpen]);
   return htmlElement
     ? createPortal(
         <AnimatePresence>

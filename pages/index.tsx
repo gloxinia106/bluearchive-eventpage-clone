@@ -1,6 +1,8 @@
 import Modal from "@/components/modal";
 import Section0 from "@/router/section0";
 import Section1 from "@/router/section1";
+import Section2 from "@/router/section2";
+import Section3 from "@/router/section3";
 import ReactFullpage, { fullpageApi } from "@fullpage/react-fullpage";
 import Head from "next/head";
 import { useState } from "react";
@@ -30,6 +32,14 @@ export default function Home() {
       <ReactFullpage
         licenseKey={"YOURE Key"}
         loopBottom={true}
+        afterLoad={(origin, destination) => {
+          if (destination.index === 3) {
+            const videoElement = document.getElementById(
+              "sushinoVideo"
+            ) as HTMLVideoElement | null;
+            videoElement ? videoElement.play() : null;
+          }
+        }}
         render={({ state, fullpageApi }) => {
           return (
             <ReactFullpage.Wrapper>
@@ -40,8 +50,10 @@ export default function Home() {
                 }}
               />
               <Section1 />
+              <Section2 />
+              <Section3 fullpageApi={fullpageApi} />
               <div className="section">
-                <div>Sectton3</div>
+                <div>Sectton4</div>
               </div>
             </ReactFullpage.Wrapper>
           );
@@ -52,7 +64,6 @@ export default function Home() {
         handleClose={() => {
           setYoutubeModal(false);
         }}
-        wrapperId="youtube-modal"
       >
         <div className="bg-[url('/current/popup/pop_youtube.png')] w-[1745px] h-[827px] -ml-[200px] relative">
           <div className="absolute top-[9px] left-[430px] w-[1078px] h-[606px]">

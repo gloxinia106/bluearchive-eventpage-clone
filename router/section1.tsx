@@ -1,3 +1,4 @@
+import Frame from "@/components/frame";
 import NoticeList from "@/components/notice-list";
 import Popup from "@/components/popup";
 import PopupBtn from "@/components/popup-btn";
@@ -30,149 +31,154 @@ export default function Section1() {
     <>
       <div className="section">
         <div className="bg-[url('/current/section1/bg.jpg')] bg-cover bg-center absolute top-0 w-full h-screen"></div>
-        <div className="z-30 w-full h-full absolute top-0 overflow-hidden flex items-center">
-          <div className="bg-[url('/current/section1/bg_cont_ko.png')] mx-auto w-[1159px] h-[859px] shrink-0 relative">
-            <div className="bg-[url('/current/section1/char.png')] absolute w-[1097px] h-[1414px] -top-[120px] -right-[640px] -z-10 "></div>
-            <div className="absolute top-[165px] right-[120px] w-[405px] space-y-7">
-              <div className="flex items-center space-x-5">
-                <div className="flex items-center">
-                  <input
-                    className="mr-2 circle-input"
-                    type="radio"
-                    name="phone_os"
-                    id="android"
-                  />
-                  <label htmlFor="android" className="text-xl">
-                    AOS
-                  </label>
-                </div>
-                <div className="flex items-center">
-                  <input
-                    className="mr-2 circle-input"
-                    type="radio"
-                    name="phone_os"
-                    id="ios"
-                  />
-                  <label htmlFor="ios" className="text-xl">
-                    IOS
-                  </label>
-                </div>
+        <Frame
+          url="/current/section1/bg_cont_ko.png"
+          width="1159"
+          height="859"
+          charUrl="/current/section1/char.png"
+          charWidth="1097"
+          charHeight="1414"
+          charPos="-640"
+        >
+          <div className="absolute top-[165px] right-[120px] w-[405px] space-y-7">
+            <div className="flex items-center space-x-5">
+              <div className="flex items-center">
+                <input
+                  className="mr-2 circle-input"
+                  type="radio"
+                  name="phone_os"
+                  id="android"
+                />
+                <label htmlFor="android" className="text-xl">
+                  AOS
+                </label>
+              </div>
+              <div className="flex items-center">
+                <input
+                  className="mr-2 circle-input"
+                  type="radio"
+                  name="phone_os"
+                  id="ios"
+                />
+                <label htmlFor="ios" className="text-xl">
+                  IOS
+                </label>
+              </div>
+              <PopupBtn
+                text="유의사항"
+                handleOpen={() => {
+                  setIsNotice(true);
+                }}
+              />
+            </div>
+            <div className="space-y-4">
+              <div className="relative">
+                <input
+                  className="w-full border-2 border-input-gray py-3 pl-16 rounded-xl text-xl text-black"
+                  placeholder="'-'을 제외하고 숫자만 입력해 주세요."
+                />
+                <div className="absolute top-3.5 left-5 text-xl">010</div>
+              </div>
+              <button className="w-full border border-blue-600 text-white bg-blue-500 text-xl py-3 rounded-xl">
+                인증번호 받기
+              </button>
+            </div>
+            <div className="flex items-center space-x-2.5">
+              <input
+                id="all-agree-checkbox"
+                className="circle-input"
+                type={"checkbox"}
+                onChange={handleSelectAll}
+                checked={selected.length === 3 ? true : false}
+              />
+              <label htmlFor="all-agree-checkbox" className="text-xl">
+                아래 내용을 확인하였으며, 모두 동의합니다.
+              </label>
+            </div>
+            <div className="space-y-2">
+              <div className="space-x-2 flex items-center">
+                <input
+                  id="fourteen-over"
+                  className="square-checkbox"
+                  type={"checkbox"}
+                  checked={selected.includes("item1")}
+                  onChange={(e) => {
+                    onChangeSelected(e, "item1");
+                  }}
+                />
+                <label
+                  htmlFor="fourteen-over"
+                  className="text-sm text-gray-600"
+                >
+                  만 14세 이상입니다.
+                </label>
+              </div>
+              <div className="space-x-2 flex items-center">
+                <input
+                  id="privacy-aggree"
+                  className="square-checkbox"
+                  type={"checkbox"}
+                  checked={selected.includes("item2")}
+                  onChange={(e) => {
+                    onChangeSelected(e, "item2");
+                  }}
+                />
+                <label
+                  htmlFor="privacy-aggree"
+                  className="text-sm text-gray-600"
+                >
+                  개인정보 수집 및 이용 동의
+                </label>
                 <PopupBtn
-                  text="유의사항"
+                  text="자세히 보기"
                   handleOpen={() => {
-                    setIsNotice(true);
+                    setIsPrivacyAggree(true);
                   }}
                 />
               </div>
-              <div className="space-y-4">
-                <div className="relative">
-                  <input
-                    className="w-full border-2 border-input-gray py-3 pl-16 rounded-xl text-xl text-black"
-                    placeholder="'-'을 제외하고 숫자만 입력해 주세요."
-                  />
-                  <div className="absolute top-3.5 left-5 text-xl">010</div>
-                </div>
-                <button className="w-full border border-blue-600 text-white bg-blue-500 text-xl py-3 rounded-xl">
-                  인증번호 받기
-                </button>
-              </div>
-              <div className="flex items-center space-x-2.5">
+              <div className="space-x-2 flex items-center">
                 <input
-                  id="all-agree-checkbox"
-                  className="circle-input"
+                  id="macketing-aggree"
+                  className="square-checkbox"
                   type={"checkbox"}
-                  onChange={handleSelectAll}
-                  checked={selected.length === 3 ? true : false}
+                  checked={selected.includes("item3")}
+                  onChange={(e) => {
+                    onChangeSelected(e, "item3");
+                  }}
                 />
-                <label htmlFor="all-agree-checkbox" className="text-xl">
-                  아래 내용을 확인하였으며, 모두 동의합니다.
+                <label
+                  htmlFor="macketing-aggree"
+                  className="text-sm text-gray-600"
+                >
+                  게임플레이 등에 유용한 소식 받기
                 </label>
+                <PopupBtn
+                  text="자세히 보기"
+                  handleOpen={() => {
+                    setIsMacketingAggree(true);
+                  }}
+                />
               </div>
-              <div className="space-y-2">
-                <div className="space-x-2 flex items-center">
-                  <input
-                    id="fourteen-over"
-                    className="square-checkbox"
-                    type={"checkbox"}
-                    checked={selected.includes("item1")}
-                    onChange={(e) => {
-                      onChangeSelected(e, "item1");
-                    }}
-                  />
-                  <label
-                    htmlFor="fourteen-over"
-                    className="text-sm text-gray-600"
-                  >
-                    만 14세 이상입니다.
-                  </label>
-                </div>
-                <div className="space-x-2 flex items-center">
-                  <input
-                    id="privacy-aggree"
-                    className="square-checkbox"
-                    type={"checkbox"}
-                    checked={selected.includes("item2")}
-                    onChange={(e) => {
-                      onChangeSelected(e, "item2");
-                    }}
-                  />
-                  <label
-                    htmlFor="privacy-aggree"
-                    className="text-sm text-gray-600"
-                  >
-                    개인정보 수집 및 이용 동의
-                  </label>
-                  <PopupBtn
-                    text="자세히 보기"
-                    handleOpen={() => {
-                      setIsPrivacyAggree(true);
-                    }}
-                  />
-                </div>
-                <div className="space-x-2 flex items-center">
-                  <input
-                    id="macketing-aggree"
-                    className="square-checkbox"
-                    type={"checkbox"}
-                    checked={selected.includes("item3")}
-                    onChange={(e) => {
-                      onChangeSelected(e, "item3");
-                    }}
-                  />
-                  <label
-                    htmlFor="macketing-aggree"
-                    className="text-sm text-gray-600"
-                  >
-                    게임플레이 등에 유용한 소식 받기
-                  </label>
-                  <PopupBtn
-                    text="자세히 보기"
-                    handleOpen={() => {
-                      setIsMacketingAggree(true);
-                    }}
-                  />
-                </div>
-              </div>
-              <button className="bg-[url('/current/section1/btn_reg.png')] w-[404px] h-[80px]"></button>
             </div>
-            <div className="absolute bottom-[100px] left-[215px] grid grid-cols-3 gap-1.5">
-              <a
-                className="w-[115px] h-[40px]"
-                href="https://play.google.com/store/apps/details?id=com.nexon.bluearchive"
-              ></a>
-
-              <a
-                className="w-[115px] h-[40px]"
-                href="https://apps.apple.com/kr/app/id1571873795"
-              ></a>
-
-              <a
-                className="w-[115px] h-[40px]"
-                href="https://onesto.re/0000758646"
-              ></a>
-            </div>
+            <button className="bg-[url('/current/section1/btn_reg.png')] w-[404px] h-[80px]"></button>
           </div>
-        </div>
+          <div className="absolute bottom-[100px] left-[215px] grid grid-cols-3 gap-1.5">
+            <a
+              className="w-[115px] h-[40px]"
+              href="https://play.google.com/store/apps/details?id=com.nexon.bluearchive"
+            ></a>
+
+            <a
+              className="w-[115px] h-[40px]"
+              href="https://apps.apple.com/kr/app/id1571873795"
+            ></a>
+
+            <a
+              className="w-[115px] h-[40px]"
+              href="https://onesto.re/0000758646"
+            ></a>
+          </div>
+        </Frame>
       </div>
       <Popup
         handleClose={() => {

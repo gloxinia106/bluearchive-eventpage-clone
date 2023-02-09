@@ -4,19 +4,12 @@ import { createPortal } from "react-dom";
 interface ModalProps {
   children: ReactNode;
   isOpen: boolean;
-  wrapperId: string;
   handleClose: () => void;
 }
 
-export default function Modal({
-  children,
-  isOpen,
-  handleClose,
-  wrapperId,
-}: ModalProps) {
+export default function Modal({ children, isOpen, handleClose }: ModalProps) {
   useEffect(() => {
     if (isOpen) {
-      console.log("hidden");
       document.body.style.overflow = "hidden";
       window.fullpage_api.setAllowScrolling(false);
       window.fullpage_api.setMouseWheelScrolling(false);
@@ -50,7 +43,7 @@ export default function Modal({
             {children}
           </div>
         </>,
-        document.getElementById(wrapperId)!
+        document.getElementById("modal")!
       )
     : null;
 }
