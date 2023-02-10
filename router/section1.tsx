@@ -39,6 +39,7 @@ export default function Section1() {
           charWidth="1097"
           charHeight="1414"
           charPos="-640"
+          charFront={false}
         >
           <div className="absolute top-[165px] right-[120px] w-[405px] space-y-7">
             <div className="flex items-center space-x-5">

@@ -9,6 +9,7 @@ interface FrameProps {
   charHeight: string;
   charUrl: string;
   charPos: string;
+  charFront: boolean;
 }
 
 export default function Frame({
@@ -20,6 +21,7 @@ export default function Frame({
   url,
   charUrl,
   charPos,
+  charFront,
 }: FrameProps) {
   return (
     <div className="z-30 w-full h-full absolute top-0 overflow-hidden flex items-center">
@@ -32,7 +34,9 @@ export default function Frame({
         }}
       >
         <div
-          className={`absolute -top-[120px] -right-[${charPos}px] -z-10 `}
+          className={`absolute -top-[120px] -right-[${charPos}px] ${
+            charFront ? "" : "-z-10"
+          } `}
           style={{
             backgroundImage: `url(${charUrl})`,
             width: `${charWidth}px`,

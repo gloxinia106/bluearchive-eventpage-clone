@@ -12,6 +12,7 @@ export default function Section2() {
         charWidth="1097"
         charHeight="1414"
         charPos="-760"
+        charFront={false}
       ></Frame>
     </div>
   );
