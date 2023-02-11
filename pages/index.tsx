@@ -1,4 +1,5 @@
 import Modal from "@/components/modal";
+import Nav from "@/components/nav";
 import Section0 from "@/router/section0";
 import Section1 from "@/router/section1";
 import Section2 from "@/router/section2";
@@ -17,6 +18,7 @@ declare global {
 
 export default function Home() {
   const [youtubeModal, setYoutubeModal] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
   return (
     <>
       <Head>
@@ -33,6 +35,7 @@ export default function Home() {
       </Head>
       <ReactFullpage
         licenseKey={"YOURE Key"}
+        anchors={["1", "2", "3", "4", "5"]}
         loopBottom={true}
         afterLoad={(origin, destination) => {
           if (destination.index === 3) {
@@ -41,6 +44,9 @@ export default function Home() {
             ) as HTMLVideoElement | null;
             videoElement ? videoElement.play() : null;
           }
+        }}
+        onLeave={(origin, destination) => {
+          setCurrentPage(destination.index + 1);
         }}
         render={({ state, fullpageApi }) => {
           return (
@@ -78,6 +84,7 @@ export default function Home() {
           </div>
         </div>
       </Modal>
+      <Nav currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </>
   );
 }
