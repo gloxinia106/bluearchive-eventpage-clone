@@ -59,7 +59,10 @@ export default function Home() {
               />
               <Section1 />
               <Section2 />
-              <Section3 fullpageApi={fullpageApi} />
+              <Section3
+                fullpageApi={fullpageApi}
+                setCurrentPage={setCurrentPage}
+              />
               <Section4 />
               <Section5 />
             </ReactFullpage.Wrapper>

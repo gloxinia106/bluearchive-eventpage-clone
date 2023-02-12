@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 interface NavProps {
   currentPage: number;
@@ -17,6 +17,7 @@ export default function Nav({ currentPage, setCurrentPage }: NavProps) {
         <button
           className="bg-[url('/current/nav_ko.png')] w-[185px] h-[55px]"
           style={{ backgroundPositionX: currentPage === 1 ? "-200px" : "" }}
+          disabled={currentPage === 10 ? true : false}
           onClick={() => {
             onClick(1);
           }}
@@ -27,6 +28,7 @@ export default function Nav({ currentPage, setCurrentPage }: NavProps) {
             backgroundPositionY: "-59px",
             backgroundPositionX: currentPage === 2 ? "-200px" : "",
           }}
+          disabled={currentPage === 10 ? true : false}
           onClick={() => {
             onClick(2);
           }}
@@ -37,6 +39,7 @@ export default function Nav({ currentPage, setCurrentPage }: NavProps) {
             backgroundPositionY: "-120px",
             backgroundPositionX: currentPage === 3 ? "-200px" : "",
           }}
+          disabled={currentPage === 10 ? true : false}
           onClick={() => {
             onClick(3);
           }}
@@ -47,6 +50,7 @@ export default function Nav({ currentPage, setCurrentPage }: NavProps) {
             backgroundPositionY: "-182px",
             backgroundPositionX: currentPage === 4 ? "-200px" : "",
           }}
+          disabled={currentPage === 10 ? true : false}
           onClick={() => {
             onClick(4);
           }}
@@ -57,6 +61,7 @@ export default function Nav({ currentPage, setCurrentPage }: NavProps) {
             backgroundPositionY: "-243px",
             backgroundPositionX: currentPage === 5 ? "-200px" : "",
           }}
+          disabled={currentPage === 10 ? true : false}
           onClick={() => {
             onClick(5);
           }}

@@ -1,13 +1,17 @@
 import Modal from "@/components/modal";
 import { fullpageApi } from "@fullpage/react-fullpage";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 interface Section3Props {
   fullpageApi: fullpageApi;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
 }
 
-export default function Section3({ fullpageApi }: Section3Props) {
+export default function Section3({
+  fullpageApi,
+  setCurrentPage,
+}: Section3Props) {
   const [show, setShow] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -26,10 +30,13 @@ export default function Section3({ fullpageApi }: Section3Props) {
                   fullpageApi.setAllowScrolling(true);
                   fullpageApi.setMouseWheelScrolling(true);
                   setShow(false);
+                  setCurrentPage(3);
                 }}
                 onPlay={() => {
                   fullpageApi.setAllowScrolling(false);
                   fullpageApi.setMouseWheelScrolling(false);
+                  setCurrentPage(10);
+                  console.log(10);
                 }}
                 className="absolute top-0 object-cover w-full h-full z-50"
               >
