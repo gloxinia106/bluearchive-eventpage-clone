@@ -2,12 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 
+ * react-fullpage v0.1.31
+ * https://github.com/alvarotrigo/react-fullpage
+ *
+ * Copyright (c) 2023 Alvaro Trigo
+ * Licensed under GPLv3
+ */
+
 body {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .up-animation {
-  transition: all 0.6s ease-out ;
+  transition: all 0.6s ease-out;
 }
 
 .up-animation:hover {
@@ -32,7 +40,7 @@ body {
 }
 
 .circle-input:checked {
-  background-image: url('/current/bul_input_radio.png');
+  background-image: url("/current/bul_input_radio.png");
   width: 25px;
   height: 25px;
   background-position: bottom 3px right 3px;
@@ -49,8 +57,7 @@ body {
 }
 
 .square-checkbox:checked {
-  
-  background-image: url('/current/bul_input_checkbox.png');
+  background-image: url("/current/bul_input_checkbox.png");
   width: 17px;
   height: 17px;
   background-position: bottom 3px right 1px;
