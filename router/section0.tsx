@@ -1,14 +1,14 @@
-import { fullpageApi } from "@fullpage/react-fullpage";
+import { useSwiper } from "swiper/react";
 import { useRef, useState } from "react";
 
 interface Section0Props {
-  fullpageApi: fullpageApi;
   handleOpen: () => void;
 }
 
-export default function Section0({ fullpageApi, handleOpen }: Section0Props) {
+export default function Section0({ handleOpen }: Section0Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [musicBtn, setMusicBtn] = useState(false);
+  const swiper = useSwiper();
 
   return (
     <div id="section0" className="section">
@@ -69,7 +69,8 @@ export default function Section0({ fullpageApi, handleOpen }: Section0Props) {
         <button
           className="bg-[url('/current/section0/btn_goReg.png')] w-[450px] h-[105px] up-animation"
           onClick={() => {
-            fullpageApi.moveSectionDown();
+            swiper.slideNext();
+            console.log(swiper.slideTo);
           }}
         ></button>
         <div className="absolute bottom-0 bg-[url('/current/bul_scroll.png')] w-[45px] h-[60px] animate-bounce"></div>

@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
- * react-fullpage v0.1.31
- * https://github.com/alvarotrigo/react-fullpage
- *
- * Copyright (c) 2023 Alvaro Trigo
- * Licensed under GPLv3
- */
-
 body {
   font-family: "Noto Sans KR", sans-serif;
 }

@@ -1,5 +1,6 @@
 import { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { useSwiper } from "swiper/react";
 
 interface ModalProps {
   children: ReactNode;
@@ -8,15 +9,16 @@ interface ModalProps {
 }
 
 export default function Modal({ children, isOpen, handleClose }: ModalProps) {
+  const swiper = useSwiper();
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      window.fullpage_api.setAllowScrolling(false);
-      window.fullpage_api.setMouseWheelScrolling(false);
+      swiper.mousewheel.disable();
+      swiper.keyboard.disable();
     } else {
       document.body.style.overflow = "unset";
-      window.fullpage_api.setAllowScrolling(true);
-      window.fullpage_api.setMouseWheelScrolling(true);
+      swiper?.mousewheel?.enable();
+      swiper?.keyboard?.enable();
     }
   }, [isOpen]);
   return isOpen

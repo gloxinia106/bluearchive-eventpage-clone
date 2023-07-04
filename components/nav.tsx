@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { useSwiper } from "swiper/react";
 
 interface NavProps {
   currentPage: number;
@@ -6,13 +7,13 @@ interface NavProps {
 }
 
 export default function Nav({ currentPage, setCurrentPage }: NavProps) {
+  const swiper = useSwiper();
   const onClick = (num: number) => {
     setCurrentPage(num);
-    console.log(num);
-    window.fullpage_api.moveTo(num, 0);
+    swiper.slideTo(num);
   };
   return (
-    <div className="fixed top-[40%] right-5">
+    <div className="fixed top-[40%] right-5 z-30">
       <nav className="grid gap-1">
         <button
           className="bg-[url('/current/nav_ko.png')] w-[185px] h-[55px]"

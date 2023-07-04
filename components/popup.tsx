@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSwiper } from "swiper/react";
 
 interface PopupProps {
   children: ReactNode;
@@ -20,16 +21,17 @@ const popupVariants = {
 
 export default function Popup({ isOpen, children, handleClose }: PopupProps) {
   const [htmlElement, setHtmlElement] = useState<HTMLElement | null>(null);
+  const swiper = useSwiper();
   useEffect(() => {
     setHtmlElement(document.getElementById("popup"));
   });
   useEffect(() => {
     if (isOpen) {
-      window.fullpage_api.setAllowScrolling(false);
-      window.fullpage_api.setMouseWheelScrolling(false);
+      swiper.mousewheel.disable();
+      swiper.keyboard.disable();
     } else {
-      window.fullpage_api.setAllowScrolling(true);
-      window.fullpage_api.setMouseWheelScrolling(true);
+      swiper?.mousewheel?.enable();
+      swiper?.keyboard?.enable();
     }
   }, [isOpen]);
   return htmlElement

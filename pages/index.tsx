@@ -6,15 +6,13 @@ import Section2 from "@/router/section2";
 import Section3 from "@/router/section3";
 import Section4 from "@/router/section4";
 import Section5 from "@/router/section5";
-import ReactFullpage, { fullpageApi } from "@fullpage/react-fullpage";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Head from "next/head";
 import { useState } from "react";
+import { Pagination, Mousewheel, Keyboard } from "swiper/modules";
 
-declare global {
-  interface Window {
-    fullpage_api: fullpageApi;
-  }
-}
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default function Home() {
   const [youtubeModal, setYoutubeModal] = useState(false);
@@ -33,61 +31,57 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <ReactFullpage
-        licenseKey={"YOURE Key"}
-        anchors={["1", "2", "3", "4", "5"]}
-        loopBottom={true}
-        afterLoad={(origin, destination) => {
-          if (destination.index === 3) {
-            const videoElement = document.getElementById(
-              "sushinoVideo"
-            ) as HTMLVideoElement | null;
-            videoElement ? videoElement.play() : null;
-          }
-        }}
-        onLeave={(origin, destination) => {
-          setCurrentPage(destination.index + 1);
-        }}
-        render={({ state, fullpageApi }) => {
-          return (
-            <ReactFullpage.Wrapper>
-              <Section0
-                fullpageApi={fullpageApi}
-                handleOpen={() => {
-                  setYoutubeModal(true);
-                }}
-              />
-              <Section1 />
-              <Section2 />
-              <Section3
-                fullpageApi={fullpageApi}
-                setCurrentPage={setCurrentPage}
-              />
-              <Section4 />
-              <Section5 />
-            </ReactFullpage.Wrapper>
-          );
-        }}
-      />
-      <Modal
-        isOpen={youtubeModal}
-        handleClose={() => {
-          setYoutubeModal(false);
-        }}
+      <Swiper
+        direction="vertical"
+        slidesPerView={1}
+        mousewheel={true}
+        keyboard={true}
+        modules={[Pagination, Mousewheel, Keyboard]}
+        className="h-screen"
+        loop={true}
       >
-        <div className="bg-[url('/current/popup/pop_youtube.png')] w-[1745px] h-[827px] -ml-[200px] relative">
-          <div className="absolute top-[9px] left-[430px] w-[1078px] h-[606px]">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/NdcVyW9IGfs?autoplay=1"
-              allow="autoplay; encrypted-video"
-              allowFullScreen
-            ></iframe>
+        <SwiperSlide>
+          <Section0
+            handleOpen={() => {
+              setYoutubeModal(true);
+            }}
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Section1 />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Section2 />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Section3 setCurrentPage={setCurrentPage} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Section4 />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Section5 />
+        </SwiperSlide>
+        <Nav currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <Modal
+          isOpen={youtubeModal}
+          handleClose={() => {
+            setYoutubeModal(false);
+          }}
+        >
+          <div className="bg-[url('/current/popup/pop_youtube.png')] w-[1745px] h-[827px] -ml-[200px] relative">
+            <div className="absolute top-[9px] left-[430px] w-[1078px] h-[606px]">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/NdcVyW9IGfs?autoplay=1"
+                allow="autoplay; encrypted-video"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
-        </div>
-      </Modal>
-      <Nav currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        </Modal>
+      </Swiper>
     </>
   );
 }

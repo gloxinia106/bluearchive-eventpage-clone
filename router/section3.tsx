@@ -1,19 +1,16 @@
 import Modal from "@/components/modal";
-import { fullpageApi } from "@fullpage/react-fullpage";
+import { useSwiper } from "swiper/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 
 interface Section3Props {
-  fullpageApi: fullpageApi;
   setCurrentPage: Dispatch<SetStateAction<number>>;
 }
 
-export default function Section3({
-  fullpageApi,
-  setCurrentPage,
-}: Section3Props) {
+export default function Section3({ setCurrentPage }: Section3Props) {
   const [show, setShow] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const swiper = useSwiper();
   return (
     <>
       <div className="section">
@@ -27,14 +24,14 @@ export default function Section3({
                 playsInline
                 muted
                 onEnded={() => {
-                  fullpageApi.setAllowScrolling(true);
-                  fullpageApi.setMouseWheelScrolling(true);
+                  swiper.mousewheel.enable();
+                  swiper.keyboard.enable();
                   setShow(false);
                   setCurrentPage(3);
                 }}
                 onPlay={() => {
-                  fullpageApi.setAllowScrolling(false);
-                  fullpageApi.setMouseWheelScrolling(false);
+                  swiper.mousewheel.disable();
+                  swiper.keyboard.disable();
                   setCurrentPage(10);
                   console.log(10);
                 }}
