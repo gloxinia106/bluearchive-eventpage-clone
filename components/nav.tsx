@@ -9,8 +9,8 @@ interface NavProps {
 export default function Nav({ currentPage, setCurrentPage }: NavProps) {
   const swiper = useSwiper();
   const onClick = (num: number) => {
-    setCurrentPage(num);
-    swiper.slideTo(num);
+    setCurrentPage(num - 1);
+    swiper.slideTo(num - 1);
   };
   return (
     <div className="fixed top-[40%] right-5 z-30">

@@ -9,7 +9,7 @@ import Section5 from "@/router/section5";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Head from "next/head";
 import { useState } from "react";
-import { Pagination, Mousewheel, Keyboard } from "swiper/modules";
+import { Pagination, Mousewheel, Keyboard, Parallax } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -36,9 +36,28 @@ export default function Home() {
         slidesPerView={1}
         mousewheel={true}
         keyboard={true}
-        modules={[Pagination, Mousewheel, Keyboard]}
+        parallax={true}
+        speed={800}
+        onInit={() => {
+          const videoElement = document.getElementById(
+            "bgVideo"
+          ) as HTMLVideoElement | null;
+          videoElement ? videoElement.play() : null;
+        }}
+        onSlideChange={(swiper) => {
+          if (swiper.activeIndex === 3) {
+            const videoElement = document.getElementById(
+              "sushinoVideo"
+            ) as HTMLVideoElement | null;
+            videoElement ? videoElement.play() : null;
+          }
+          setCurrentPage(swiper.activeIndex + 1);
+          if (swiper.activeIndex === 5) {
+            setCurrentPage(5);
+          }
+        }}
+        modules={[Pagination, Mousewheel, Keyboard, Parallax]}
         className="h-screen"
-        loop={true}
       >
         <SwiperSlide>
           <Section0

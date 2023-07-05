@@ -11,7 +11,7 @@ export default function Section0({ handleOpen }: Section0Props) {
   const swiper = useSwiper();
 
   return (
-    <div id="section0" className="section">
+    <>
       <video
         id="bgVideo"
         data-autoplay
@@ -22,7 +22,11 @@ export default function Section0({ handleOpen }: Section0Props) {
       >
         <source src="/current/videos/bg_video_ko.mp4"></source>
       </video>
-      <div className="absolute top-[20px] right-[25px] z-30 flex">
+      <div
+        className="absolute top-[20px] right-[25px] z-30 flex"
+        data-swiper-parallax-y="-200"
+        data-swiper-parallax-duration="500"
+      >
         <div className="hover:cursor-pointer snsLink">
           <div className="bg-[url('/current/img_sprite.png')] w-[95px] h-[80px] bg-[-236px_-286px]"></div>
           <ul className="bg-[url('/current/img_sprite.png')] w-[95px] h-[270px] bg-[-435px_-286px] hidden">
@@ -70,11 +74,10 @@ export default function Section0({ handleOpen }: Section0Props) {
           className="bg-[url('/current/section0/btn_goReg.png')] w-[450px] h-[105px] up-animation"
           onClick={() => {
             swiper.slideNext();
-            console.log(swiper.slideTo);
           }}
         ></button>
         <div className="absolute bottom-0 bg-[url('/current/bul_scroll.png')] w-[45px] h-[60px] animate-bounce"></div>
       </div>
-    </div>
+    </>
   );
 }

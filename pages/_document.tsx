@@ -6,8 +6,8 @@ export default function Document() {
       <Head />
       <body>
         <Main />
-        <div id="modal"></div>
-        <div id="popup"></div>
+        <div id="modal" style={{ position: "absolute", zIndex: 300 }}></div>
+        <div id="popup" style={{ position: "absolute", zIndex: 300 }}></div>
         <NextScript />
       </body>
     </Html>
